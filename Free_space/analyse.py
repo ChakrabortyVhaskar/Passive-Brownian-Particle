@@ -10,7 +10,7 @@ msdx = df['msd_x'].values
 msdy = df['msd_y'].values
 msd_total = msdx + msdy
 
-# Fit MSD vs time (last part of trajectory)
+# Fit MSD vs time 
 fit_x = np.polyfit(time[-90000:], msdx[-90000:], 1)
 fit_y = np.polyfit(time[-90000:], msdy[-90000:], 1)
 fit_total = np.polyfit(time[-90000:], msd_total[-90000:], 1)
@@ -42,7 +42,7 @@ ax1 = fig.add_subplot(gs[0, 0])  # MSD_x
 ax2 = fig.add_subplot(gs[0, 1])  # MSD_y
 ax3 = fig.add_subplot(gs[1, :])  # MSD_total
 
-# Plot MSD_x
+# Plotting MSDx
 ax1.loglog(time[1:], msdx[1:], linewidth=1, color='blue', label='MSD_x')
 ax1.loglog(
     t_sample, y_fit_x, 
@@ -59,7 +59,7 @@ ax1.set_xlabel("Time")
 ax1.set_ylabel("MSD_x")
 ax1.legend()
 
-# Plot MSD_y
+# Plotting MSDy
 ax2.loglog(time[1:], msdy[1:], linewidth=1, color='red', label='MSD_y')
 ax2.loglog(t_sample, y_fit_y, 
            marker='^', 
@@ -75,7 +75,7 @@ ax2.set_xlabel("Time")
 ax2.set_ylabel("MSD_y")
 ax2.legend()
 
-# Plot total MSD
+# Plotting total MSD
 ax3.loglog(time[1:], msd_total[1:], linewidth=1, color='green', label='MSD_total')
 ax3.loglog(t_sample, y_fit_total, 
            marker='^', 
@@ -104,7 +104,7 @@ plt.savefig(f"Dt_1.pdf")
 plt.tight_layout()
 plt.show()
 
-# Plot msdx vs time
+# Plotting msdx vs time
 plt.figure(figsize=(6, 5))
 plt.plot(time, msdx, label='MSD_x', color='blue')
 plt.xlabel('Time')
@@ -113,13 +113,13 @@ plt.title('MSD_x vs Time')
 plt.legend()
 plt.grid(True)
 
-# Fit a line to msdx vs time
+# Fitting a line to msdx vs time
 plt.plot(t_sample, y_fit_x, 'r--', label='Fit')
 
 meanx = df['meanx'].values
 meany = df['meany'].values
 
-# Linear fits to mean displacements
+# Linear fitting to mean displacements
 fit_meanx = np.polyfit(time[-900000:], meanx[-900000:], 1)
 fit_meany = np.polyfit(time[-900000:], meany[-900000:], 1)
 
